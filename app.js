@@ -16,6 +16,27 @@ function reloadfunctions()
   showtime();
   NextPrayer();
 }
+function getPray(string){
+
+    const prays = ["Fajr","Sunrise","Dhuhr","Asr","Maghrib","Isha"];
+
+    for (let i = 0; i < prays.length; i++) {
+        if(string.includes(prays.at(i)))
+        {
+          return prays.at(i);
+        }
+    }
+
+
+  return Pray;
+}
+function getTime(string)
+{
+  let Time = "00";
+
+  return Time;
+
+}
 
 function deletechars(string){
 
@@ -33,6 +54,13 @@ function deletechars(string){
 
 }
 
+function filteringtheObject()
+{
+    let pray = getPray();
+    let time = getTime();
+
+    console.log(pray);
+}
 
 
 
@@ -42,9 +70,9 @@ function showtime()
 
     let witch = "PM";
    
-    let hours = time.getHours();
-    let minutes = time.getMinutes();
-    let seconds = time.getSeconds();
+    var hours = time.getHours();
+    var minutes = time.getMinutes();
+    var seconds = time.getSeconds();
     let LocalTime ;
     
 
@@ -90,11 +118,23 @@ let todayDate = time.getDay() + '-' + time.getMonth() + '-' + time.getFullYear()
 
 
 axios.get("https://api.aladhan.com/v1/nextPrayer",
-    {params: params})
+  {params: params})
   .then((response) => {
 
+    let count = 0;
     const Timings = response.data.data.timings;
-    document.getElementById("Next-Prayer").innerHTML = deletechars(JSON.stringify(Timings, null, 1))
+
+    if(count == 0){
+        document.getElementById("Next-Prayer").innerHTML = deletechars(JSON.stringify(Timings, null, 1));
+        count++;
+    }
+    if (count == 1) {
+      document.getElementsByClassName("Next-Prayer").innerHTML = deletechars(JSON.stringify(Timings, null, 1));
+      count--;
+    }
+
+   
+    
     console.log(Timings);
   })
   .catch((error) => {
@@ -110,20 +150,23 @@ axios.get("https://api.aladhan.com/v1/nextPrayer",
     
 // functions usgaes //
 
-showtime();
 NextPrayer();
+showtime();
+
 
 // onload functions only downbelow! //
 
 
 
 setInterval(() => {
+    location.reload();
     showtime();
-}, 500);
-
-setInterval(() => {
     NextPrayer();
-}, 1800000);
+
+    
+}, 900);
+
+
 
 
 
