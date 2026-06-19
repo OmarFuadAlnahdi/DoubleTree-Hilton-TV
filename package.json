@@ -2,12 +2,21 @@
   "name": "app",
   "version": "1.0.0",
   "description": "Local hours from diffreent capital country around the world used to display weather and local time with pray times for the muslims",
+  "homepage": "https://github.com/OmarFuadAlnahdi/DoubleTree-Hilton-TV#readme",
+  "bugs": {
+    "url": "https://github.com/OmarFuadAlnahdi/DoubleTree-Hilton-TV/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/OmarFuadAlnahdi/DoubleTree-Hilton-TV.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
-  "license": "ISC",
   "dependencies": {
     "axios": "^1.18.0"
   }

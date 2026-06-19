@@ -66,105 +66,82 @@ function filteringtheObject()
 
 function showtime()
 {
+    var time = new Date();
 
-
-    let witch = "PM";
-   
     var hours = time.getHours();
+    // get am/pm info BEFORE converting hours
+    var ampm = hours >= 12 ? "PM" : "AM";
+
     var minutes = time.getMinutes();
     var seconds = time.getSeconds();
-    let LocalTime ;
-    
 
-    
+    // 01, 02, 03, 04...
+    hours = hours > 12 ? hours % 12 : hours; 
+    hours = hours <= 9 ? '0' + hours: hours;
 
-    if(hours < 10){
-      hours = '0' + hours;
-      
-    }
+    // 01, 02, 03, 04.. 
+    seconds = seconds < 10 ? '0' + seconds : seconds;
 
-    if(hours < 13){
+    let LocalTime = hours + ':' + minutes + ':' + seconds +  ' ' + ampm;
 
-      LocalTime = hours + ':' + minutes + ':' + seconds ;
-    }
-    if(hours > 12){
-
-      hours = hours - 12;
-
-      LocalTime = hours + ':' + minutes + ':' + seconds ;
-
-    }
-    
-
-    
-
-    document.getElementById("Local-Time").textContent = LocalTime; 
+    document.getElementById("local-time").innerHTML = LocalTime; 
     console.log(LocalTime);
-
+    requestAnimationFrame(showtime);
 }
 
 function NextPrayer()
 {
 
-let todayDate = time.getDay() + '-' + time.getMonth() + '-' + time.getFullYear();
-
+  let todayDate = time.getDay() + '-' + time.getMonth() + '-' + time.getFullYear();
 
   let params = {
-    
     date: todayDate,
     latitude: 21.5435,
     longitude: 39.16
-};
+  };
 
 
-axios.get("https://api.aladhan.com/v1/nextPrayer",
-  {params: params})
-  .then((response) => {
+  axios.get("https://api.aladhan.com/v1/nextPrayer",
+    {params: params})
+    .then((response) => {
 
-    let count = 0;
-    const Timings = response.data.data.timings;
+      let count = 0;
+      const Timings = response.data.data.timings;
 
-    if(count == 0){
-        document.getElementById("Next-Prayer").innerHTML = deletechars(JSON.stringify(Timings, null, 1));
-        count++;
-    }
-    if (count == 1) {
-      document.getElementsByClassName("Next-Prayer").innerHTML = deletechars(JSON.stringify(Timings, null, 1));
-      count--;
-    }
+      if(count == 0){
+          document.getElementById("Next-Prayer").innerHTML = deletechars(JSON.stringify(Timings, null, 1));
+          count++;
+      }
+      if (count == 1) {
+        document.getElementsByClassName("Next-Prayer").innerHTML = deletechars(JSON.stringify(Timings, null, 1));
+        count--;
+      }
 
-   
-    
-    console.log(Timings);
-  })
-  .catch((error) => {
-    console.error(error);
-  })
-  .finally(() => {
-    console.log("Request completed");
-  });
-
-
+      console.log(Timings);
+    })
+    .catch((error) => {
+      console.error(error);
+    })
+    .finally(() => {
+      console.log("Request completed");
+    });
 
 }
     
-// functions usgaes //
+// functions usages //
 
 NextPrayer();
-showtime();
+window.requestAnimationFrame(showtime);
 
 
-// onload functions only downbelow! //
-
+// onload functions only //
 
 
 setInterval(() => {
     location.reload();
-    showtime();
     NextPrayer();
-
     
-}, 900);
+}, 15 * 60 * 1000);
 
 
 

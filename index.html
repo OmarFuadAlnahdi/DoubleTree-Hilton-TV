@@ -8,59 +8,29 @@
   <title>World Clock</title>
   <link rel="stylesheet" href="style.css">
 
-
-
-
 </head>
 
 <body>
-
- 
-    
-    <div class="countenar">
-
-      <div class="Panels">
-
-        <div class="Panel">
-          <h1>Weather and local time</h1>
-          <hr>
-          <h3 id="Local-Time"></h3>
-          <p id="weather-C"></p>
-          <p>Welcome to the hilton Hotels </p>
-
-        </div>
-
-        <div class="Panel">
-            <h1>Next Prayer</h1>
-            <hr>
-            <h3 id="Next-Prayer"></h3>
-            <h3 class="Next-Prayer"></h3>
-
-        </div>
-
-
-        <div class="Panel">
-            <h1>Global Times</h1>
-            <hr>
-            <p>Welcome to the hilton Hotels </p>
-
-
-        </div>
-        
-        
-        <div class="Panel">
-          <h1>Hilton Message</h1>
-          <hr>
-          <p>Welcome to the hilton Hotels </p>  
-
-
-        </div>
-
-
+    <div id="panel">
+      <div id="panel1" class="sizing">
+        <div class="panel-title text-color">TIME & WEATHER</div>
+        <h3 id="local-time" class = "text-color"></h3>
       </div>
 
-    </div>
+      <div id="panel2" class="sizing">
+        <div class="panel-title text-color">NEXT PRAYER</div>
+        <h3 id="Next-Prayer"></h3>
+        <h3 class="Next-Prayer"></h3>
+      </div>
 
+      <div id="panel3" class="sizing">
+        <div class="panel-title text-color">WORLD CLOCKS</div>
+      </div>
+
+      <div id="panel4" class="sizing">
+        <div class="panel-title text-color">HOTEL MESSAGES</div>
+      </div>
+    </div>
 
 
   <script src="./node_modules/axios/dist/axios.min.js"></script>
@@ -68,6 +38,4 @@
 
 </body>
   
-
-
 </html>
