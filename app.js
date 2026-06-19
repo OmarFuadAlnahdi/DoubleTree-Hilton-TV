@@ -1,40 +1,76 @@
+// creating vars //
+
+const time = new Date();
+
+
+
+// creating functions //
 
 function print(string)
 {
   console.log(string);
 }
 
-// function GetTheNextPrayer(extend){
+function reloadfunctions()
+{
+  showtime();
+  NextPrayer();
+}
 
-//     const prayers = ["Fajr","Sunrise","Dhuhr","Asr","Maghrib","Isha"];
-   
-//     for (let index = 0; index < prayers.length; index++) {
-//       const element = prayers[index];
-//       if( == element)
-//         {
-//             return element;
-//         }
-//     }
-// }
+function deletechars(string){
 
-const time = new Date();
+   string = string.replace('{',"");
+   string = string.replace('}',"");
+   string = string.replace('"',"");
+   string = string.replace('"',"");
+   string = string.replace('"',"");
+   string = string.replace('"',"");
+
+
+
+    return string;
+
+
+}
+
+
+
 
 function showtime()
 {
-  time.toLocaleTimeString('en-US',{
-        minute:'2-digit',
-        second:'2-digit',
-        hour:'2-digit',
-        hour12:true
-    });
-  
 
+
+    let witch = "PM";
+   
     let hours = time.getHours();
     let minutes = time.getMinutes();
     let seconds = time.getSeconds();
-    let LocalTime = hours + ':' + minutes + ':' + seconds ;
+    let LocalTime ;
+    
 
-    document.getElementById("Local-Time").innerText = LocalTime;
+    
+
+    if(hours < 10){
+      hours = '0' + hours;
+      
+    }
+
+    if(hours < 13){
+
+      LocalTime = hours + ':' + minutes + ':' + seconds ;
+    }
+    if(hours > 12){
+
+      hours = hours - 12;
+
+      LocalTime = hours + ':' + minutes + ':' + seconds ;
+
+    }
+    
+
+    
+
+    document.getElementById("Local-Time").textContent = LocalTime; 
     console.log(LocalTime);
 
 }
@@ -58,7 +94,7 @@ axios.get("https://api.aladhan.com/v1/nextPrayer",
   .then((response) => {
 
     const Timings = response.data.data.timings;
-    document.getElementById("Next-Prayer").innerHTML = Timings;
+    document.getElementById("Next-Prayer").innerHTML = deletechars(JSON.stringify(Timings, null, 1))
     console.log(Timings);
   })
   .catch((error) => {
@@ -72,41 +108,26 @@ axios.get("https://api.aladhan.com/v1/nextPrayer",
 
 }
     
+// functions usgaes //
+
+showtime();
+NextPrayer();
+
+// onload functions only downbelow! //
+
+
+
+setInterval(() => {
+    showtime();
+}, 500);
+
+setInterval(() => {
+    NextPrayer();
+}, 1800000);
 
 
 
 
-
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// this is for the local time //
-
-
-
-
-
-window.onload = function () {
-
-  setInterval(showtime, 500); 
-}
-
-window.onload = function () {
-
-  setInterval(NextPrayer,1000000);   // 3,600,000 = 1hour // 1,800,000 = half hour;
-}
 
 
 
