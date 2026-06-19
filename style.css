@@ -1,0 +1,37 @@
+
+body{
+    background: linear-gradient(135deg, #140124, #11013b);
+}
+h1,h2,h3,h4,h5,h6{
+    margin: 0px;
+}
+.countenar{
+    background: linear-gradient(135deg, #140124, #11013b);
+}
+.Panels{
+    margin-left: 200px;
+    margin-top: 140px;
+}
+.Panels div{
+    display:inline-block;   
+    margin:100px 20px 0px 0px;
+    
+}
+.Panel{
+    
+    border: 0.5px solid rgb(219, 219, 219);
+    border-color: white;
+    height: 300px;
+
+}
+.Panel * {
+    color: aliceblue;
+}
+.Panel h1{
+    
+    background: linear-gradient(135deg, #140124, #11013b);
+    color: aliceblue;
+    margin: 15px;
+}
+
+
