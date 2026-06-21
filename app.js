@@ -11,6 +11,7 @@ const period = hours >= 12 ? "PM" : "AM";
 
 
 
+
 // creating functions //
 
 function print(string)
@@ -39,12 +40,17 @@ function GetWaether()
 };
 
 
+
+
 axios.get("https://www.meteosource.com/api/v1/free/point",
   {params : params})
   .then((response) => {
-
+    console.log();
     let temperature = response.data.hourly.data[0].temperature;
-    console.log(temperature);
+    let WatherStatus = response.data.hourly.data[0].temperature;
+    let temperature = response.data.hourly.data[0].temperature;
+    let temperature = response.data.hourly.data[0].temperature;
+
     displayWeather("weather-C",temperature);
    
 
