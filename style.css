@@ -1,37 +1,67 @@
-
-body{
-    background: linear-gradient(135deg, #140124, #11013b);
-}
-h1,h2,h3,h4,h5,h6{
-    margin: 0px;
-}
-.countenar{
-    background: linear-gradient(135deg, #140124, #11013b);
-}
-.Panels{
-    margin-left: 200px;
-    margin-top: 140px;
-}
-.Panels div{
-    display:inline-block;   
-    margin:100px 20px 0px 0px;
-    
-}
-.Panel{
-    
-    border: 0.5px solid rgb(219, 219, 219);
-    border-color: white;
-    height: 300px;
-
-}
-.Panel * {
-    color: aliceblue;
-}
-.Panel h1{
-    
-    background: linear-gradient(135deg, #140124, #11013b);
-    color: aliceblue;
-    margin: 15px;
+.text-color
+{
+  color: white;
 }
 
+#panel
+{
+  display: flex; 
+  border-style: dotted;
+  background-color: #111820;
+}
 
+#panel1, #panel2, #panel3{
+  border-right-style: solid;
+  border-width: 3px;
+  border-color: #d1d4d6;
+}
+
+/* 
+ each panel should be 1080x1920 but for testing, sizes have been scaled down to
+ 480x853 with s.f of 1/2.25
+ */
+.sizing
+{
+  height: 853px;
+  width: 480px;
+}
+
+.panel-title
+{
+  font-family: "Montserrat" ,sans-serif;
+  margin-top: 20px;
+  font-size: 1.5rem;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.weather-info
+{
+  display: flex;
+  align-items: flex-start;
+  gap: 20%;
+}
+
+.more-weather-info
+{
+  display: flex;
+  flex-direction: column;
+}
+
+.time {
+  font-size: 5rem;
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+
+}
+
+.date {
+
+}
+.temp {
+  margin-left: 30%;
+
+}
