@@ -2,6 +2,30 @@
 
 const time = new Date();
 
+const daysOfWeek = [
+  "Sunday",
+  "Monday",
+  "Tuesday",
+  "Wednesday",
+  "Thursday",
+  "Friday",
+  "Saturday"
+];
+
+const months = [
+  "Jan",
+  "Feb",
+  "Mar",
+  "Apr",
+  "May",
+  "June",
+  "July",
+  "Aug",
+  "Sep",
+  "Oct",
+  "Nov",
+  "Dec"
+];
 
 
 // creating functions //
@@ -58,39 +82,48 @@ function filteringtheObject()
 {
     let pray = getPray();
     let time = getTime();
-
+show them
     console.log(pray);
 }
 
 
 
-function showtime()
+function showTime()
 {
-    var time = new Date();
 
     var hours = time.getHours();
     // get am/pm info BEFORE converting hours
     var ampm = hours >= 12 ? "PM" : "AM";
 
     var minutes = time.getMinutes();
-    var seconds = time.getSeconds();
 
     // 01, 02, 03, 04...
     hours = hours > 12 ? hours % 12 : hours; 
     hours = hours <= 9 ? '0' + hours: hours;
+    minutes = minutes <= 9 ? '0' + minutes: minutes;
 
-    // 01, 02, 03, 04.. 
-    seconds = seconds < 10 ? '0' + seconds : seconds;
 
-    let LocalTime = hours + ':' + minutes + ':' + seconds +  ' ' + ampm;
+    let LocalTime = hours + ':' + minutes + ' ' + ampm;
 
     document.getElementById("local-time").innerHTML = LocalTime; 
     console.log(LocalTime);
-    requestAnimationFrame(showtime);
+    requestAnimationFrame(showTime);
+}
+
+function showDate()
+{
+  let day = daysOfweek[time.getDay()];
+  let month = months[time.getMonth()];
+  let todayDate = day + ',' + time.getDay() + month + '-' + time.getFullYear();
+  let todayDate = "${day} ah"
+  document.getElementById("date").innerHTML = todayDate;
+  requestAnimationFrame(showDate);
+
 }
 
 function NextPrayer()
 {
+
 
   let todayDate = time.getDay() + '-' + time.getMonth() + '-' + time.getFullYear();
 
@@ -131,7 +164,8 @@ function NextPrayer()
 // functions usages //
 
 NextPrayer();
-window.requestAnimationFrame(showtime);
+requestAnimationFrame(showTime);
+requestAnimationFrame(showDate);
 
 
 // onload functions only //

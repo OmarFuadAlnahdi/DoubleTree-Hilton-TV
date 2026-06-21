@@ -37,3 +37,32 @@
   justify-content: center;
   align-items: center;
 }
+
+.weather-info
+{
+  display: flex;
+  align-items: flex-start;
+  gap: 20%;
+}
+
+.more-weather-info
+{
+  display: flex;
+  flex-direction: column;
+}
+
+.time {
+  font-size: 5rem;
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+
+}
+
+.date {
+
+}
+.temp {
+  margin-left: 30%;
+
+}
